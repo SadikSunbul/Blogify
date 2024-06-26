@@ -9,14 +9,20 @@ import (
 var DB *sql.DB // database connection
 
 // InitDB veritabanını başlatır
-func InitDB(dataSourceName string) {
-	var err error                                  // veritabanı baglantı hatası
-	DB, err = sql.Open("postgres", dataSourceName) // veritabanı baglantısı yapılır ve hata kontrol edilir
+// InitDB initializes the database connection
+func InitDB(dataSourceName string) *sql.DB {
+	var err error
+	db, err := sql.Open("postgres", dataSourceName)
 	if err != nil {
-		log.Panic(err) // hata varsa loga yazılır
+		log.Fatalf("Veritabanı bağlantısı başlatılamadı: %v", err)
 	}
 
-	if err = DB.Ping(); err != nil { // baglantıyı kontrol eder ve hata varsa loga yazılır
-		log.Panic(err)
+	// Ping the database to verify the connection
+	err = db.Ping()
+	if err != nil {
+		log.Fatalf("Veritabanına ping atılamadı: %v", err)
 	}
+
+	log.Println("Veritabanı bağlantısı başarıyla başlatıldı")
+	return db
 }
