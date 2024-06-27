@@ -49,7 +49,7 @@ Blogify follows the Onion Architecture, which emphasizes the separation of conce
    go run main.go
 ## API Documentation
 
-For detailed API documentation and testing, please visit the [Blogify Postman Workspace](https://www.postman.com/denemesadik/workspace/blogify/request/27431083-74d7d796-6882-4c47-b123-8cdbef03ad84).
+For detailed API documentation and testing, please visit the [Blogify Postman Workspace](https://documenter.getpostman.com/view/27431083/2sA3dsmDY2).
 
 ## Contributing
 
