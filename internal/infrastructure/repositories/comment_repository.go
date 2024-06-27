@@ -28,9 +28,9 @@ func NewCommentRepository(db *sql.DB) CommentRepository {
 
 // Create veritabanında yeni bir yorum oluşturur
 func (r *commentRepository) Create(comment *entities.Comment) error {
-	query := `INSERT INTO comments (id, post_id, user_id, content, created_at) VALUES ($1, $2, $3, $4, $5)`
-	_, err := r.db.Exec(query, comment.ID, comment.PostID, comment.UserID, comment.Content, comment.CreatedAt)
-	if err != nil {
+	query := `INSERT INTO comments (id, post_id, user_id, content, created_at) VALUES ($1, $2, $3, $4, $5)`    // SQL sorgusu
+	_, err := r.db.Exec(query, comment.ID, comment.PostID, comment.UserID, comment.Content, comment.CreatedAt) // SQL sorgusunu veritabanına yollar
+	if err != nil {                                                                                            // hata varsa
 		log.Printf("Error creating comment: %v", err)
 		return err
 	}
